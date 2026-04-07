@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luminous Canvas - Single File Portfolio</title>
+  <meta name="description" content="Single file public portfolio for Swathi Yellampati" />
+  <style>
+    :root {
+      --bg: #f7f7fb;
+      --card: #ffffff;
+      --text: #000000;
+      --muted: #3b3b45;
+      --primary: #7c3aed;
+      --accent: #06b6d4;
+      --border: #e3e3ec;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+    .section { padding: 72px 0; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 10px 24px rgba(18, 18, 28, 0.06);
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #db2777, #2563eb, #06b6d4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+      background: rgba(247, 247, 251, 0.92);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    nav a { text-decoration: none; color: var(--muted); font-size: 14px; margin-left: 10px; }
+    nav a:hover { color: var(--text); }
+    .hero { text-align: center; padding-top: 90px; }
+    .hero h1 { font-size: clamp(40px, 8vw, 74px); margin: 0 0 8px; }
+    .hero h2 { font-size: clamp(20px, 3.2vw, 30px); color: var(--muted); margin: 0 0 20px; font-weight: 500; }
+    .hero p { max-width: 760px; margin: 0 auto 24px; color: var(--muted); }
+    .btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 16px;
+      text-decoration: none;
+      color: var(--text);
+      background: #fff;
+      font-weight: 600;
+    }
+    .btn.primary {
+      border: none;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: white;
+    }
+    .title { text-align: center; margin-bottom: 28px; }
+    .title h3 { margin: 0; font-size: clamp(30px, 5vw, 44px); }
+    .subtitle { margin: 0; color: var(--muted); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .p-20 { padding: 20px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #cfd7ff;
+      background: #eef2ff;
+      font-size: 13px;
+    }
+    .project h4 { margin: 0 0 8px; }
+    .project p { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+    .filters { display: flex; justify-content: center; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+    .filter-btn {
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--text);
+      border-radius: 10px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+    .filter-btn.active {
+      color: white;
+      border: none;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+    form label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; }
+    input, textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font: inherit;
+      color: var(--text);
+    }
+    textarea { min-height: 120px; resize: vertical; }
+    .foot { text-align: center; color: var(--muted); padding: 24px 12px 40px; }
+    @media (max-width: 860px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container row">
+      <strong class="gradient-text">&lt;Dev /&gt;</strong>
+      <div>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero section container" id="hero">
+    <p class="subtitle">Hello, I'm</p>
+    <h1 class="gradient-text">Yellampati Swathi</h1>
+    <h2>AI & Data Science Enthusiast | Web Developer</h2>
+    <p>
+      Aspiring AI & Data Science undergraduate with strong proficiency in Python, SQL, Java, and React.js.
+      Passionate about building scalable, real-world data-driven solutions.
+    </p>
+    <div class="btns">
+      <a class="btn primary" href="#projects">View Projects</a>
+      <a class="btn" href="#resume">Download Resume</a>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container">
+      <div class="title">
+        <p class="subtitle">About me</p>
+        <h3 class="gradient-text">Who I Am</h3>
+      </div>
+      <div class="card p-20">
+        <p>
+          I'm Swathi Yellampati, an aspiring AI & Data Science undergraduate at Saveetha School of Engineering, Chennai.
+          With strong proficiency in Python, SQL, Java, and C, along with Data Structures & Algorithms, I specialize in
+          Machine Learning and building predictive models using Scikit-learn.
+        </p>
+        <p>
+          Skilled in HTML, CSS, and React.js with hands-on experience in data visualization, preprocessing, and building
+          scalable real-world data-driven solutions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="title">
+        <p class="subtitle">My work</p>
+        <h3 class="gradient-text">Featured Projects</h3>
+      </div>
+      <div class="filters">
+        <button class="filter-btn active" data-filter="All">All</button>
+        <button class="filter-btn" data-filter="AI/ML">AI/ML</button>
+        <button class="filter-btn" data-filter="Web">Web</button>
+      </div>
+      <div class="grid-2" id="project-list"></div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="title">
+        <p class="subtitle">Expertise</p>
+        <h3 class="gradient-text">Skills & Technologies</h3>
+      </div>
+      <div class="grid-3">
+        <div class="card p-20">
+          <h4>Programming</h4>
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">Java</span><span class="chip">C</span><span class="chip">SQL</span>
+          </div>
+        </div>
+        <div class="card p-20">
+          <h4>Web Development</h4>
+          <div class="chips">
+            <span class="chip">React JS</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span>
+          </div>
+        </div>
+        <div class="card p-20">
+          <h4>AI / ML & Tools</h4>
+          <div class="chips">
+            <span class="chip">Scikit-learn</span><span class="chip">Pandas</span><span class="chip">Tableau</span><span class="chip">Git</span><span class="chip">MySQL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="resume">
+    <div class="container">
+      <div class="title">
+        <p class="subtitle">Resume</p>
+        <h3 class="gradient-text">My Resume</h3>
+      </div>
+      <div class="card p-20" style="text-align:center;">
+        <h4 style="margin:0;">Yellampati Swathi</h4>
+        <p style="color:var(--muted); margin:8px 0 16px;">AI & Data Science Undergraduate | Web Developer | ML Enthusiast</p>
+        <p style="margin:0;">Oracle SQL Certified | CGPA 9.27 | NPTEL Certified</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="title">
+        <p class="subtitle">Get in touch</p>
+        <h3 class="gradient-text">Contact Me</h3>
+      </div>
+      <div class="card p-20">
+        <form id="contact-form">
+          <div class="grid-2">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" required />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" type="email" required />
+            </div>
+          </div>
+          <div style="margin-top:12px;">
+            <label for="message">Message</label>
+            <textarea id="message" required></textarea>
+          </div>
+          <button class="btn primary" style="margin-top:14px; width:100%;" type="submit">Send Message</button>
+          <p id="form-status" style="display:none; margin:12px 0 0; color:var(--primary); font-weight:600;">Message sent!</p>
+        </form>
+        <p style="margin-top:18px; color:var(--muted); text-align:center;">
+          swathiyellampati@gmail.com | +91 6281093795 | Anantapur, Andhra Pradesh
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">© <span id="year"></span> Swathi Yellampati</footer>
+
+  <script>
+    const projects = [
+      {
+        title: "Maternal Health Risk Assessment",
+        desc: "Predictive model to assess maternal mortality risk using ML. Achieved 89.2% accuracy with Logistic Regression.",
+        tech: ["Python", "Scikit-learn", "Pandas", "Logistic Regression", "KNN"],
+        category: "AI/ML"
+      },
+      {
+        title: "Spotify Music Genre Classification",
+        desc: "ML model to classify songs into genres using audio features like tempo, energy, loudness and danceability.",
+        tech: ["Python", "Scikit-learn", "Pandas", "ML Classification"],
+        category: "AI/ML"
+      },
+      {
+        title: "Web Development - Corizo Internship",
+        desc: "Developed responsive web applications using HTML, CSS, and React JS with reusable components.",
+        tech: ["React", "HTML", "CSS", "JavaScript"],
+        category: "Web"
+      },
+      {
+        title: "AI Internship - Corizo",
+        desc: "Built machine learning models for prediction and classification tasks with preprocessing and visualization.",
+        tech: ["Python", "ML", "Data Visualization", "Logistic Regression"],
+        category: "AI/ML"
+      }
+    ];
+
+    const list = document.getElementById("project-list");
+    const buttons = Array.from(document.querySelectorAll(".filter-btn"));
+    let active = "All";
+
+    function renderProjects() {
+      const filtered = active === "All" ? projects : projects.filter((p) => p.category === active);
+      list.innerHTML = filtered.map((p) => `
+        <article class="card p-20 project">
+          <h4>${p.title}</h4>
+          <p>${p.desc}</p>
+          <div class="chips">${p.tech.map((t) => `<span class="chip">${t}</span>`).join("")}</div>
+        </article>
+      `).join("");
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        active = btn.dataset.filter;
+        buttons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderProjects();
+      });
+    });
+
+    document.getElementById("contact-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      document.getElementById("form-status").style.display = "block";
+      e.target.reset();
+      setTimeout(() => {
+        document.getElementById("form-status").style.display = "none";
+      }, 2500);
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    renderProjects();
+  </script>
+</body>
+</html>
