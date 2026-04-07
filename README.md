@@ -1,3 +1,0 @@
-# Luminous Canvas
-
-Portfolio site.
